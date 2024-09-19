@@ -28,13 +28,6 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'description' => 'nullable|min:20',
-            'duration' => 'nullable|integer|min:1|max:999'
-        ]);
-
-        $recipe = Recipe::create(attributes: $data);
         return redirect()->route(route: 'recipe.index');
     }
 
