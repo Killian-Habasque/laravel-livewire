@@ -10,9 +10,16 @@ class RecipesList extends Component
 {
     use WithPagination;
 
+    public $search = '';
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }  
+
     public function render()
     {
-        $recipes = Recipe::latest()->paginate(2);
+        $recipes = Recipe::when($this->search, fn ($query) => $query->where('name', 'like', "%{$this->search}%"))->latest()->paginate(2);
 
         return view('livewire.recipes-list', [
             "recipes" => $recipes

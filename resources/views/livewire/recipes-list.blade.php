@@ -1,5 +1,5 @@
 <div>
-    <input type="text" name="search">
+    <input type="text" name="search" wire:model.live="search">
     <table>
         <tr>
             <td>
