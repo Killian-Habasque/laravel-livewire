@@ -1,6 +1,10 @@
-<div x-data="{ open: false }" x-on:click.away="open = false">
-    <button x-on:click.prevent="open= ! open">Nouvelle recette</button>
-    <dialog x-bind:open="open">
+<div
+    x-data
+    x-on:recipe-created="$refs.modal.hidePopover()"
+    >
+    <button x-on:click.prevent="$refs.modal.showPopover()">Nouvelle recette</button>
+    <div popover x-ref="modal">
+        <button x-on:click="$refs.modal.hidePopover()">Annuler</button>
         <form wire:submit="create" method="post">
             @csrf
             <div>
@@ -20,6 +24,6 @@
             </div>
             <input type="submit">
         </form>
-    </dialog>
+    </div>
 
 </div>

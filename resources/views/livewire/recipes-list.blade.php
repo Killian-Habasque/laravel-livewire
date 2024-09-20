@@ -19,7 +19,7 @@
             </td>
         </tr>
         @foreach($recipes as $recipe)
-        <tr>
+        <tr wire:key="recipe-{{ $recipe->id }}">
             <td>
                 {{$recipe->id}}
             </td>

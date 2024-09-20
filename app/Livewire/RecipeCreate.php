@@ -20,6 +20,10 @@ class RecipeCreate extends Component
             'duration' => 'nullable|integer|min:1|max:999'
         ]);
         $recipe = Recipe::create(attributes: $data);
+
+        $this->dispatch('recipe-created');
+
+        $this->reset();
     }
 
     public function render()
